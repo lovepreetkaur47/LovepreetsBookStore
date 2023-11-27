@@ -217,3 +217,42 @@ then
 i add  use statement and potential fixes to remove errors
 after
 Modify create the constructors 
+3.30
+i add an indivdual repos for category named CategoryRepository.cs 
+and ICategoryRepository.cs 
+modify CategoryRepository.cs
+while fixing i got errors and solve them using potential errors like adding name spaces
+also using statements
+
+4.03
+add interface folder named by ISP_Call.cs 
+which extends IDisposable
+then 
+i install the NuGet Package for 'Dapper' as shown in potential fixing eroor solution
+then i add it in using statement
+
+
+4.15
+add class sp_call.cs in Repository folder
+implementing ISP_Call.cs interface
+then i add database connection
+
+8.12
+updating  ISP_Call.cs interface
+
+then i got a email in my inbox tomorrow class is cancel
+and i left my all assignment and take breake
+
+8/11/2023
+11.23
+add interface class name IUnitOfWork.cs in IRepository folder 
+and update it as shown in pptx
+after............
+i add UnitOfWork.cs class in Repository 
+
+and services in startup.cs 
+its time to satrt
+
+********************* part 2.3
+12.10
+create a CategoryController in Areas-Admin-Controller 
