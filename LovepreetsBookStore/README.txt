@@ -112,3 +112,25 @@ now i delete all create project
 then search for claass library i found it 
 i create its on another name 
 them also delete
+4.00 23/10/2023
+i found right one now i am going to create it with class library
+and insatall two commands 
+but i was unable.......
+then i create first project LvepreetBook.DataAccess
+them addd Data folder to it And 
+then install relational comand
+then i delete migration folder
+
+and insatall command
+then sqlserver
+again i did same thing for Mondel and utility
+them i copied Model folder to LovepreetBook.models
+And i got three error 
+thn i read definition and solve it them
+them i provide rference
+now i am ready to go forward
+5.30 create static class in LovepreetBook.Utility project
+then modify the properties of sd class to public
+then 
+5.37 going to add Project references to Main project
+also add roject references to DataAccess project 
