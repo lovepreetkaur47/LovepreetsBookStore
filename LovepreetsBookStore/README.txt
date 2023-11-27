@@ -71,3 +71,19 @@ it was good to go ahead
 rename exiting site.css file and add new site.css which is provided by Andrew
 modify layout.css and also 
 rename the bootstrap and add new bootstrap add to layout.cshtml 
+1:33pm and also
+//
+/
+modify layoutpartial.css
+then run it 
+yupppp......
+ i did it 
+ i did not understand the next i took a break
+after long break
+10.21am 
+28/10/2023
+first i added contentMangemet in navigation bar
+then i did
+alot of struggle to add drop down item 
+after long search i add it i took little bit help from youtube 
+actually i a following a channel coding ninja where i found this method
