@@ -174,3 +174,10 @@ then edit in to
 Man Love preet
 5/11/2023
 i start project again 
+**************
+Now i have done part one of project now its time to move part 2
+
+
+
+27/11/2023
+1.45aam
