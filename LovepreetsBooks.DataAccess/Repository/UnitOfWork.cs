@@ -18,7 +18,7 @@ namespace LovepreetsBooks.DataAccess.Repository
             Category = new CategoryRepository(_db);
             SP_Call = new SP_Call(_db);
             CoverType = new CoverTypeRepository(_db);
-            //Product = new ProductRepository(_db);
+            Product = new ProductRepository(_db);
         }
 
         public ICategoryRepository Category { get; private set; }
@@ -26,7 +26,7 @@ namespace LovepreetsBooks.DataAccess.Repository
 
         public ICoverTypeRepository CoverType { get; private set; }
 
-        //public IProductRepository Product { get; private set; }
+        public IProductRepository Product { get; private set; }
 
         public void Dispose()
         {
