@@ -87,3 +87,28 @@ then i did
 alot of struggle to add drop down item 
 after long search i add it i took little bit help from youtube 
 actually i a following a channel coding ninja where i found this method
+first i changed nav-item to class="nav-item dropdown
+this is css style
+then 
+<a> modify toggles the dropdown menu
+class="nav-link dropdown-toggle" classes the styling of the link,  function as a dropdown toggle.
+href="#": The href attribute is set to # to make the link clickable but not direct to any actual page.
+
+placeceholder href attributes, usually for JavaScript-enabled functionality. Replace # with actual URLs as needed.
+same day
+evening
+6.06
+i started work again on my assignment afetr setting up the phpstrom for assignment 
+i test it again 
+i can,t believe on my eyes 
+its working without any mistake
+now......................................
+i am going to satrt 1.4 part
+at 6.08
+first create 3 more project as previous one
+upssssssssssssssssssss.......
+i created wrong one as previous mvc
+now i delete all create project 
+then search for claass library i found it 
+i create its on another name 
+them also delete
