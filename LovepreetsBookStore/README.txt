@@ -202,3 +202,18 @@ after analysing i solve tehe problem get data in migration file.
 2.58 i run update-Database commmand finally i did it 
 20231127085203_AddCategoryToDb
 ***********************************************************
+finaaly its time to go ahead 
+and i am at 2.2 repositary
+
+add folder name as Repository in .DataAccess 
+and by Repository folder add IRepository folder under folder add 
+item namedby IRepository.cs
+
+ modifing file to do through all crud operations...........
+
+3.05
+Add new class Repository.cs in Repository folder
+then 
+i add  use statement and potential fixes to remove errors
+after
+Modify create the constructors 
