@@ -134,3 +134,43 @@ then modify the properties of sd class to public
 then 
 5.37 going to add Project references to Main project
 also add roject references to DataAccess project 
+.37 going to add Project references to Main project
+also add roject references to DataAccess project 
+5.52
+I add new mvc area By name Customer
+first i was enable them i remove error add it again
+6.12 
+i changed routes in satrtup file to customr
+then i moved homeController.cs to area- customer- controler
+and delete model,Data folder
+Edit homecontroller [Area("Customer")]
+them rum it it gave me masssage local host is not found 
+uppppppppppppppppppppp.............................................
+then i add pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}"); to satrtup file 
+and run it 
+yupppppppppppp it wil work
+30/10/2023
+9.47
+i startrd again 
+and test it it worked proper
+but bootstrap and css is not working
+then i followed toturial slides again 
+copied _viewImports.cshtml and _viewStart.cshtml to Cutomer area and
+Changed path in _ViewStart.cshtml 
+And then test it
+yupppppppppppppppppppppp
+its working
+and New mvc Admin area to area and delete Data Model Folder
+10.06
+Delete the Controller from Area Folder
+Finally
+I cant believe its Completed 
+yuuup
+Lets dance ......................
+At last i edit dropdown menu
+references:
+https://getbootstrap.com/docs/4.4/components/dropdowns/
+then edit in to 
+Man Love preet
+5/11/2023
+i start project again 
