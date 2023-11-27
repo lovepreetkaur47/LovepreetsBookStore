@@ -6,10 +6,9 @@ namespace LovepreetsBooks.DataAccess.Repository.IRepository
 {
     public interface IUnitOfWork : IDisposable
     {
-        CategoryRepository Category { get; }
+        ICategoryRepository Category { get; }
 
         ISP_Call SP_Call { get; }
-                void Save();
-
+        void Save();
     }
 }
