@@ -256,3 +256,72 @@ its time to satrt
 ********************* part 2.3
 12.10
 create a CategoryController in Areas-Admin-Controller 
+create a CategoryController in Areas-Admin-Controller 
+and update.................
+
+then
+add index view html file in Areas-View a
+modify with code which is provided Assignment2- files folder( Category Index View.txt.....)
+then link it in layout page
+run the app
+is good to go
+
+
+12.30
+add the icons in the Category through Font Awesome 4
+and confirm by run the appliction
+in wwwroot-js folder name as category.js
+add @section call to the category.js 
+
+
+12.45
+appling activate  'Edit' and 'Delete' buttons and 
+using the Upsert action....
+copy and paste the code from Category Upsert View.txt 
+after
+create partial
+_CreateAndBackToListButton.cshtml file 
+in View-Shared fold
+ _EditAndBookToListButton and add @model razor statement 
+
+
+1.00
+i update Upsert.cshtml 
+then run application
+added @section call to Scripts in Upsert.cshtml file
+
+13/11/2023
+at last------------------
+i added the API to call for HTTPDelete in the CategoryController
+delete funtion in category with including the onclick 
+I completed  part2 
+but create button not working...........
+
+14/11/2023
+comment
+ssl
+ //"sslPort": 44308 to run on local
+ i tried to run 
+ but no output found then i aplied migration 
+ now its good to go a head
+
+
+ its Time to go a head 
+ part 3 Section 1 ***********************
+ i create new class named coverType same as crud type way
+ 10.30
+ i was trying to create it 
+ 
+ 
+create CoverType.cs in LovepreetBook.Model project 
+Then
+add id and name 
+then
+i added CoverTypeRepository in Repository folder 
+and ICoverTypeRepository interface to IRepository folder
+then add CoverType to UnitOfWork class and IUnitOfWork interface
+
+20-11-2023
+ then i open ApplicationDbContext.cs file and write 
+  public DbSet<CoverType> Covertypes { get; set; }
+  ***********************
