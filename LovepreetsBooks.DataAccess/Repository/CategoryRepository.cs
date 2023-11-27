@@ -11,10 +11,12 @@ namespace LovepreetsBooks.DataAccess.Repository
     public class CategoryRepository : Repository<Category>, ICategoryRepository
     {
         private readonly ApplicationDbContext _db;
-        public CategoryRepository(ApplicationDbContext db) : base(db)
+
+        public CategoryRepository(ApplicationDbContext dbContext) : base(dbContext)
         {
-            _db = db;
+            _db = dbContext;
         }
+
         public void Update(Category category)
         {
             //us .NET LINQ to retrieve the first or default category object,
@@ -25,8 +27,9 @@ namespace LovepreetsBooks.DataAccess.Repository
                 objFromDb.Name = category.Name;
                 _db.SaveChanges();
             }
+
             throw new NotImplementedException();
         }
-
     }
 }
+

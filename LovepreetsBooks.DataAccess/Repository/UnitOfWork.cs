@@ -1,16 +1,18 @@
 ﻿using LovepreetsBooks.DataAccess.Repository.IRepository;
+using LovepreetsBooks.Models;
 using LovepreetsBookStore.DataAccess.Data;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace LovepreetsBooks.DataAccess.Repository
 {
-    public class UnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
-        private readonly ApplicationDbContext _db; //the using statement
+        private readonly ApplicationDbContext _db;
 
-        public UnitOfWork(ApplicationDbContext db)   //constructor to use DI and inject in to the repositories
+        public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Category = new CategoryRepository(_db);
@@ -19,16 +21,17 @@ namespace LovepreetsBooks.DataAccess.Repository
 
         public ICategoryRepository Category { get; private set; }
         public ISP_Call SP_Call { get; private set; }
+
+        CategoryRepository IUnitOfWork.Category => throw new NotImplementedException();
+
         public void Dispose()
         {
             _db.Dispose();
         }
 
-        public void Save()  //all changes will be saved when the save method is called at the 'parent' level
+        public void Save()
         {
             _db.SaveChanges();
         }
-
-
     }
 }

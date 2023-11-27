@@ -4,10 +4,12 @@ using System.Text;
 
 namespace LovepreetsBooks.DataAccess.Repository.IRepository
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
         CategoryRepository Category { get; }
 
         ISP_Call SP_Call { get; }
+                void Save();
+
     }
 }
