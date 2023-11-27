@@ -27,6 +27,8 @@ namespace LovepreetsBooks.DataAccess.Repository
                 objFromDb.Name = coverType.Name;
                 _db.SaveChanges();
             }
+
+            throw new NotImplementedException();
         }
     }
 }
