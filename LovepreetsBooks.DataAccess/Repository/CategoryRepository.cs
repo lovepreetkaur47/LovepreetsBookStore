@@ -28,8 +28,6 @@ namespace LovepreetsBooks.DataAccess.Repository
                 _db.SaveChanges();
             }
 
-            throw new NotImplementedException();
         }
     }
 }
-
