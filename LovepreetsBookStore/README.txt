@@ -181,3 +181,24 @@ Now i have done part one of project now its time to move part 2
 
 27/11/2023
 1.45aam
+12.41
+update appsetting.json to  "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=LovepreetBookStore;Trusted_Connection=True;MultipleActiveResultSets=true"
+  },
+i run command AddDefualtMigration 
+first i tried it at LovepreetBookStore
+as folow toturial 
+i run it in side LovepreetBook.DataAccess project i
+it succed
+*********20231127084224_AddDefaultIdentityMigration**********
+1.01pm 
+run update-database command
+yuppp 
+it run succed
+then after some time it run Add-migration AddCategory file but it was first time successful 
+second i add calass category.cs
+bthen update aaaaa applicationDbCotext.cs 
+then again run Categories migrataion file 
+after analysing i solve tehe problem get data in migration file.
+2.58 i run update-Database commmand finally i did it 
+20231127085203_AddCategoryToDb
+***********************************************************
