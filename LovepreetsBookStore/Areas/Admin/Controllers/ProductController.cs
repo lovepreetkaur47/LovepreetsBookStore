@@ -73,56 +73,63 @@ namespace LovepreetsBookStore.Areas.Admin.Controllers
                 {
                     string fileName = Guid.NewGuid().ToString();
                     var uploads = Path.Combine(webRootPath, @"images\products");
-                    if (System.IO.File.Exists(imagePath))
+                    var extension = Path.GetExtension(files[0].FileName);
+
+                    if (productVM.Product.ImageUrl != null)
                     {
-                        System.IO.File.Delete(imagePath);
+                        // this is an edit and we need to remove old image
+                        var imagePath = Path.Combine(webRootPath, productVM.Product.ImageUrl.TrimStart('\\'));
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            System.IO.File.Delete(imagePath);
+                        }
+                    }
+                    using (var filesStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                    {
+                        files[0].CopyTo(filesStreams);
+                    }
+                    productVM.Product.ImageUrl = @"\images\products\" + fileName + extension;
+                }
+                else
+                {
+                    // update when they do not change the image
+                    if (productVM.Product.Id != 0)
+                    {
+                        Product objFromDb = _unitOfWork.Product.Get(productVM.Product.Id);
+                        productVM.Product.ImageUrl = objFromDb.ImageUrl;
                     }
                 }
-                using (var filesStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+
+                if (productVM.Product.Id == 0)
                 {
-                    files[0].CopyTo(filesStreams);
+                    _unitOfWork.Product.Add(productVM.Product);
                 }
-                productVM.Product.ImageUrl = @"\images\products\" + fileName + extension;
+                else
+                {
+                    _unitOfWork.Product.Update(productVM.Product);
+                }
+                _unitOfWork.Save();
+                return RedirectToAction(nameof(Index));
             }
             else
             {
-                // update when they do not change the image
+                productVM.CategoryList = _unitOfWork.Category.GetAll().Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                });
+                productVM.CoverTypeList = _unitOfWork.CoverType.GetAll().Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                });
                 if (productVM.Product.Id != 0)
                 {
-                    Product objFromDb = _unitOfWork.Product.Get(productVM.Product.Id);
-                    productVM.Product.ImageUrl = objFromDb.ImageUrl;
+                    productVM.Product = _unitOfWork.Product.Get(productVM.Product.Id);
                 }
             }
-            if (productVM.Product.Id == 0)
-            {
-                _unitOfWork.Product.Add(productVM.Product);
-            }
-            else
-            {
-                _unitOfWork.Product.Update(productVM.Product);
-            }
-            _unitOfWork.Save();
-            return RedirectToAction(nameof(Index));
+            return View(productVM);
         }
-        else
-        {
-            ProductVM.CategoryList = _unitOfWork.Category.GetAll().Select(i => new SelectListItem
-            {
-                Text = i.Name,
-                Value = i.Id.ToString()
-            });
-             productVM.CoverTypeList = _unitOfWork.CoverType.GetAll().Select(i => new SelectListItem
-             {
-                Text = i.Name,
-                Value = i.Id.ToString()
-              });
-              if (productVM.Product.Id != 0)
-              {
-                productVM.Product = _unitOfWork.Product.Get(productVM.Product.Id);
-              }
-         }
-         return View(productVM);
-     }
 
 
         // API CALLS here
@@ -132,7 +139,7 @@ namespace LovepreetsBookStore.Areas.Admin.Controllers
         public IActionResult GetAll()
         {
             //return NotFound();
-            var allObj = _unitOfWork.Product.GetAll(includeProperties: "Category, CoverType");
+            var allObj = _unitOfWork.Product.GetAll(includeProperties: "Category,CoverType");
             return Json(new { data = allObj });
         }
 
