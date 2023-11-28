@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -30,7 +31,7 @@ namespace LovepreetsBookStore.Areas.Admin.Controllers
 
         public IActionResult Upsert(int? id)  //action method for upsert
         {
-            ProductVM productVM = new ProductVM()   //using GurmanBooks.Models
+            ProductVM productVM = new ProductVM()   //using LovepreetsBooks.Models
             {
                 Product = new Product(),
                 CategoryList = _unitOfWork.Category.GetAll().Select(i => new SelectListItem
@@ -62,24 +63,67 @@ namespace LovepreetsBookStore.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public IActionResult Upsert(Product product)
+        public IActionResult Upsert(ProductVM productVM)
         {
             if (ModelState.IsValid)        //checks all validation in the model(e.g Name Required) to increase security
             {
-                if (product.Id == 0)
+                string webRootPath = _hostEnvironment.WebRootPath;
+                var files = HttpContext.Request.Form.Files;
+                if (files.Count > 0)
                 {
-                    _unitOfWork.Product.Add(product);
-
+                    string fileName = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(webRootPath, @"images\products");
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        System.IO.File.Delete(imagePath);
+                    }
                 }
-                else
+                using (var filesStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
                 {
-                    _unitOfWork.Product.Update(product);
+                    files[0].CopyTo(filesStreams);
                 }
-                _unitOfWork.Save();
-                return RedirectToAction(nameof(Index));       //to see all the products
+                productVM.Product.ImageUrl = @"\images\products\" + fileName + extension;
             }
-            return View(product);
+            else
+            {
+                // update when they do not change the image
+                if (productVM.Product.Id != 0)
+                {
+                    Product objFromDb = _unitOfWork.Product.Get(productVM.Product.Id);
+                    productVM.Product.ImageUrl = objFromDb.ImageUrl;
+                }
+            }
+            if (productVM.Product.Id == 0)
+            {
+                _unitOfWork.Product.Add(productVM.Product);
+            }
+            else
+            {
+                _unitOfWork.Product.Update(productVM.Product);
+            }
+            _unitOfWork.Save();
+            return RedirectToAction(nameof(Index));
         }
+        else
+        {
+            ProductVM.CategoryList = _unitOfWork.Category.GetAll().Select(i => new SelectListItem
+            {
+                Text = i.Name,
+                Value = i.Id.ToString()
+            });
+             productVM.CoverTypeList = _unitOfWork.CoverType.GetAll().Select(i => new SelectListItem
+             {
+                Text = i.Name,
+                Value = i.Id.ToString()
+              });
+              if (productVM.Product.Id != 0)
+              {
+                productVM.Product = _unitOfWork.Product.Get(productVM.Product.Id);
+              }
+         }
+         return View(productVM);
+     }
+
 
         // API CALLS here
         #region API CALLS 
@@ -100,6 +144,12 @@ namespace LovepreetsBookStore.Areas.Admin.Controllers
             if (objFromDb == null)
             {
                 return Json(new { success = false, message = "Error while deleting" });
+            }
+            string webRootPath = _hostEnvironment.WebRootPath;
+            var imagePath = Path.Combine(webRootPath, objFromDb.ImageUrl.TrimStart('\\'));
+            if (System.IO.File.Exists(imagePath))
+            {
+                System.IO.File.Delete(imagePath);
             }
             _unitOfWork.Product.Remove(objFromDb);
             _unitOfWork.Save();
