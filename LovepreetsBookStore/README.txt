@@ -401,3 +401,5 @@ i up date
 SD.cs 
 CoverTypeController.cs
 Upsert file in CoverType View
+28/11/2023
+Comment ssl to run on pc
