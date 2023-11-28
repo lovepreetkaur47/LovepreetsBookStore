@@ -391,4 +391,13 @@ and
 i add a folder name products i wwwroot-images
 i uncomment method again
 hey i foreget to add jawascriptfile for product
-i add this in js 
+i add this in js
+
+10.51
+part-4  
+i compare my code with repositary that is provided by you
+and 
+i up date 
+SD.cs 
+CoverTypeController.cs
+Upsert file in CoverType View
