@@ -58,7 +58,7 @@ namespace LovepreetsBookStore.Areas.Admin.Controllers
             return View(productVM);
         }
 
-        //use HTTP POST to define the post-action method
+        /*use HTTP POST to define the post-action method
         [HttpPost]
         [ValidateAntiForgeryToken]
 
@@ -79,7 +79,7 @@ namespace LovepreetsBookStore.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));       //to see all the products
             }
             return View(product);
-        }
+        }*/
 
         // API CALLS here
         #region API CALLS 
