@@ -381,3 +381,14 @@ yupppppppppppp
 its working
 
 its time to move Forword
+than 8.09 pm
+27/11/2023
+i tried two to do 3.3 part
+then i move ahesd and i
+addd tinyCloud and
+then comment Assignment2 in projectController
+and 
+i add a folder name products i wwwroot-images
+i uncomment method again
+hey i foreget to add jawascriptfile for product
+i add this in js 
