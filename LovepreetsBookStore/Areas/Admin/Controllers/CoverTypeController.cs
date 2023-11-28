@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dapper;
+using LovepreetsBooks.Utility;
 
 namespace LovepreetsBookStore.Areas.Admin.Controllers
 { 
@@ -29,13 +31,16 @@ namespace LovepreetsBookStore.Areas.Admin.Controllers
             //this is for create
             return View(coverType);
             }
-            coverType = _unitOfWork.CoverType.Get(id.GetValueOrDefault());
+            var parameter = new DynamicParameters();
+            parameter.Add("@Id", id);
+            coverType = _unitOfWork.SP_Call.OneRecord<CoverType>(SD.Proc_CoverType_Get, parameter);
             if (coverType == null)
             {
-            return NotFound();
+                return NotFound();
             }
             return View(coverType);
         }
+        
     //Https post to define the post-action method
     //API calls here
     #region
@@ -46,17 +51,21 @@ namespace LovepreetsBookStore.Areas.Admin.Controllers
     {
         if (ModelState.IsValid) //checks all validations in model
         {
-            if (coverType.Id == 0)
-            {
-                _unitOfWork.CoverType.Add(coverType);
+                var parameter = new DynamicParameters();
+                parameter.Add("@Name", coverType.Name);
+                
+                if (coverType.Id == 0)
+                {
+                    _unitOfWork.SP_Call.Execute(SD.Proc_CoverType_Create, parameter);
 
-            }
-            else
-            {
-                _unitOfWork.CoverType.Update(coverType);
-            }
-            _unitOfWork.Save();
-            return RedirectToAction(nameof(Index)); //see all th categories
+                }
+                else
+                {
+                    parameter.Add("@Id", coverType.Id);
+                    _unitOfWork.SP_Call.Execute(SD.Proc_CoverType_Update, parameter);
+                }
+                _unitOfWork.Save();
+                return RedirectToAction(nameof(Index)); //see all th categories
 
 
         }
@@ -65,19 +74,21 @@ namespace LovepreetsBookStore.Areas.Admin.Controllers
         }
         public IActionResult GetAll()
         {
-        //return NotFound
-            var allObj = _unitOfWork.CoverType.GetAll();
+            //return NotFound
+            var allObj = _unitOfWork.SP_Call.List<CoverType>(SD.Proc_CoverType_GetAll, null);
             return Json(new { data = allObj });
         }
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            var objFromDb = _unitOfWork.CoverType.Get(id);
+            var parameter = new DynamicParameters();
+            parameter.Add("@Id", id);
+            var objFromDb = _unitOfWork.SP_Call.OneRecord<CoverType>(SD.Proc_CoverType_Get, parameter);
             if (objFromDb == null)
             {
-                return Json(new { success = true, message = "Error while deleting" });
+                return Json(new { success = false, message = "Error while deleting" });
             }
-            _unitOfWork.CoverType.Remove(objFromDb);
+            _unitOfWork.SP_Call.Execute(SD.Proc_CoverType_Delete, parameter);
             _unitOfWork.Save();
             return Json(new { success = true, message = "Delete Successful" });
         }
