@@ -325,3 +325,59 @@ then add CoverType to UnitOfWork class and IUnitOfWork interface
  then i open ApplicationDbContext.cs file and write 
   public DbSet<CoverType> Covertypes { get; set; }
   ***********************
+  then save it and run it i got 
+  migration in my account
+  the name is 
+  ***********20231121004220_AddCoverTypeToDb********
+  then update data base
+  8.02
+  i add new covertype cotroller
+  then added some important method like upert, delete, get all, remove, delete 
+  then i remove all the errors through potential solutions 
+  8.34
+  Then i added new folder CoverType in Areas/Views
+  then i added new view Index.cshtml
+  then i added new view Upsert.cshtml
+  Also i add coverType.js file in www.root/js
+  and create delete and upsert method also 
+  call api to delete and edit method
+  11.07pm
+  add new migration toproduct
+  888888888888****20231121040447_AddProductToDb*******8888888888888
+them update data base
+i applied Required method  "Title", "ISBN" and "Author", 
+create add migration "AddValidationToProduc
+*****************20231121054215_addValidationToProduct*************
+then
+Update-database
+
+1.52
+i create ProductRepository to Repository 
+IProductRepository to IRepository 
+the ProductRepository.cs file......
+then create ProductContoller, js, 
+index and upsert view same as the coverType 
+and add into UnitOfWork And IUnitOfWork
+3.42
+***************************part-3.2 ******************************
+i modified the ProductController.cs
+i created a ProductVM.cs  view model
+Then
+i installed package "Microsoft.AspNetCore.Mvc.ViewFeatures" in packager install
+
+i modified ProductController.cs file 
+update API call to include the Category 
+CoverType Properties.....
+i modified the product index view file,
+added Title, ISBN, Price, Author and Category
+updated URL in  product.js file 
+i modify the _Layout.cshtml file to add a
+new link of product in nav bar
+
+
+3.50
+run the application to test
+yupppppppppppp 
+its working
+
+its time to move Forword
