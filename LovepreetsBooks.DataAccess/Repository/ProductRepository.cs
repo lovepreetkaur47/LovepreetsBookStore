@@ -34,7 +34,6 @@ namespace LovepreetsBooks.DataAccess.Repository
                 objFromDb.CategoryId = product.CategoryId;
                 objFromDb.CoverTypeId = product.CoverTypeId;
             }
-            throw new NotImplementedException();
         }
     }
 }
