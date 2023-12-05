@@ -401,5 +401,33 @@ i up date
 SD.cs 
 CoverTypeController.cs
 Upsert file in CoverType View
-28/11/2023
+28/11/2023 10:30
 Comment ssl to run on pc
+
+05/12/2023
+1.58
+i had problem in covertype
+local host is not found
+https 500
+
+then i review my cover type controller, index and upsert for covertype
+also CoverType.js
+i updated all these files
+but its not working
+then i review repositary and iRepositary file 
+all methodes are prefectly define
+then..............
+ i added           
+edited index home page 
+so taht it loads images on home page for me 
+ then i tried to load data
+ but i was un able
+ i do not know why is not working 
+ i think because of js files are not working
+ 2.16
+ then i create new product 
+ prouduct added success but images can not see on  home screen
+
+
+
+
