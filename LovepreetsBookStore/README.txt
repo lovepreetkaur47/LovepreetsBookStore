@@ -429,5 +429,12 @@ so taht it loads images on home page for me
  prouduct added success but images can not see on  home screen
 
 
-
+ my previous project is not working because of too many exceptions
+ the new migrations are:-
+ 20231127084224_AddDefaultIdentityMigration
+ 20231127085203_AddCategoryToDb
+ 20231127220156_AddCoverTypeToDb
+ 20231127230502_AddProductToDb
+ 20231127230704_addValidationToProduct
+ 20231127230704_addValidationToProduct
 
