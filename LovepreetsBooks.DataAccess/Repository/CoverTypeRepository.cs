@@ -12,23 +12,21 @@ namespace LovepreetsBooks.DataAccess.Repository
     {
         private readonly ApplicationDbContext _db;
 
-        public CoverTypeRepository(ApplicationDbContext dbContext) : base(dbContext)
+        public CoverTypeRepository(ApplicationDbContext db) : base(db)
         {
-            _db = dbContext;
+            _db = db;
         }
+
 
         public void Update(CoverType coverType)
         {
             //us .NET LINQ to retrieve the first or default category object,
             //thn pass the id as a generic entity which matches the category ID
             var objFromDb = _db.CoverTypes.FirstOrDefault(s => s.Id == coverType.Id);
-            if (objFromDb != null) //save changes if not null 
+            if (objFromDb != null)
             {
                 objFromDb.Name = coverType.Name;
-                _db.SaveChanges();
             }
-
-            throw new NotImplementedException();
         }
     }
 }
